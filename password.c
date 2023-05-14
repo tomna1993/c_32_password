@@ -2,15 +2,19 @@
 #include <ctype.h>
 #include <stdio.h>
 
-bool checkPass(string word);
+bool checkPass(string word, const char disablesCharArray[]);
 
 int main(void)
 {
+	// Array of not accepted characters, the last element of the array always should be a nul character (\0)
+	// The length of the array can be found by iterating through the array until reach the nul character (\0)
+	const char notAcceptedChars[] = {'#', '{', '}', '/', '~', '!', '$', '\0'};
+
 	// Get the password from user
 	string password = get_string("Enter your password: ");
 
 	// Evaluate the password
-	bool isPassCorrect = checkPass(password);
+	bool isPassCorrect = checkPass(password, notAcceptedChars);
 
 	// Print information to user
 	if (isPassCorrect)
@@ -25,7 +29,7 @@ int main(void)
 	}
 }
 
-bool checkPass(string word)
+bool checkPass(string word, const char disablesCharArray[])
 {
 	return false;
 }
