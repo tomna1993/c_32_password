@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-bool checkPass(string word, const string disablesCharArray);
+bool checkPass(string word, const string disablesCharArray, const int numberOfChars);
 
 int main(void)
 {
@@ -11,12 +11,13 @@ int main(void)
 	// The length of the array can be found by iterating through the array until reach the nul character (\0)
 	const string notAcceptedChars = "#{}/~!$";
 
+	const int minNumberOfChars = 10;
 
 	// Get the password from user
 	string password = get_string("Enter your password: ");
 
 	// Evaluate the password
-	bool isPassCorrect = checkPass(password, notAcceptedChars);
+	bool isPassCorrect = checkPass(password, notAcceptedChars, minNumberOfChars);
 
 	// Print information to user
 	if (isPassCorrect)
@@ -26,12 +27,12 @@ int main(void)
 	}
 	else
 	{
-		printf("Your password needs at least one uppercase letter, lowercase letter, number and symbol!\n");
+		printf("Your password needs to be at least 10 character long, contain at least one uppercase letter, lowercase letter, number and symbol!\n");
 		return 1;
 	}
 }
 
-bool checkPass(string word, const string disablesCharArray)
+bool checkPass(string word, const string disablesCharArray, const int numberOfChars)
 {
 	bool lowerChar = false;
 	bool upperChar = false;
@@ -39,7 +40,15 @@ bool checkPass(string word, const string disablesCharArray)
 
 	int notAcceptedCharLength = strlen(disablesCharArray);
 
-	for(int i = 0, length = strlen(word); i < length; i++)
+	int passwordLength = strlen(word);
+
+	if(passwordLength < numberOfChars)
+	{
+		printf("There is %i less characters in your password then the minimum of %i!\n", numberOfChars - passwordLength, numberOfChars);
+		return false;
+	}
+
+	for(int i = 0; i < passwordLength; i++)
 	{
 		for(int j = 0; j < notAcceptedCharLength; j++)
 		{
