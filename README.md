@@ -2,11 +2,11 @@
 
 ## DESCRIPTION
 
-The user is prompted for a password, which will then be validated using a function `check`. If the password contains at least one upper case letter, one lower case letter, a number, and a symbol (meaning a printable character that’s not a letter or number, such as ‘!’, ‘$’ and ‘#’), the function should return true. If not it should return false.
+The user is prompted for a password, which will then be validated using a function `check`. If the password is at least 10 characters long and contains at least one upper case letter, one lower case letter, a number, and a symbol (meaning a printable character that’s not a letter or number, such as ‘!’, ‘$’ and ‘#’), the function should return `true`. If not it should return `false`.
 
 ### IMPLEMENTATION DETAILS
 
-The function will iterate through the password that’s supplied to it as an argument. Since you have to find at least one lower case letter, one upper case letter, one number and one symbol, we may want to create a boolean variable for each and set each to false before we iterate through the string. If we then find a number, for instance we can set that boolean to true. If all booleans are true at the end of the function, it means all criteria are met, and we would return true.
+The function will iterate through the password that’s supplied to it as an argument. Since you have to find at least one lower case letter, one upper case letter, one number and one symbol, we may want to create a boolean variable for each and set each to `false` before we iterate through the string. If we then find a number, for instance we can set that boolean to `true`. If all booleans are `true` at the end of the function, it means all criteria are met, and we would return `true`.
 
 ```bash
 ./password
