@@ -67,7 +67,7 @@ bool checkPass(string word, const string disablesCharArray, const int numberOfCh
 		{
 			upperChar = true;
 		}
-		else if(isalnum(word[i]) && isNumber == false)
+		else if(isdigit(word[i]) && isNumber == false)
 		{
 			isNumber = true;
 		}
